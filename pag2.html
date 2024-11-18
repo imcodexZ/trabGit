@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outra Página com Menu e Funcionalidade</title>
+    <style>
+        /* Estilo global */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        /* Estilos do cabeçalho e menu */
+        header {
+            background-color: #111;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        header nav a:hover {
+            background-color: #444;
+        }
+
+        /* Estilos das seções */
+        section {
+            padding: 100px 20px;  /* Espaço para o cabeçalho fixo */
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        #home {
+            background-color: #ff6f61;
+            color: white;
+        }
+
+        #about {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        #services {
+            background-color: #2196f3;
+            color: white;
+        }
+
+        #contact {
+            background-color: #f44336;
+            color: white;
+        }
+
+        /* Estilo do botão "Voltar ao topo" */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            font-size: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            transition: background-color 0.3s;
+        }
+
+        .back-to-top:hover {
+            background-color: #0d47a1;
+        }
+
+        /* Estilo da rolagem suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho e Menu de Navegação -->
+    <header>
+        <nav>
+            <a href="#" onclick="scrollToSection('home')">Início</a>
+            <a href="#" onclick="scrollToSection('about')">Sobre</a>
+            <a href="#" onclick="scrollToSection('services')">Serviços</a>
+        </nav>
+    </header>
+
+    <!-- Seções de conteúdo -->
+    <section id="home">
+        <h1>Bem-vindo à nossa Página</h1>
+        <p>Aqui é o início</p>
+    </section>
+
+    <section id="about">
+        <h1>Sobre Nós</h1>
+        <p>----------------------</p>
+    </section>
+
+    <section id="services">
+        <h1>Serviços</h1>
+        <p>----------------------</p>
+    </section>
+
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Função para rolar suavemente até as seções
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            window.scrollTo({
+                top: section.offsetTop - 60,  // Ajuste para a altura do cabeçalho fixo
+                behavior: 'smooth'
+            });
+            alert('Você clicou na seção: ' + sectionId);
+        }
+
+        // Função para mostrar/ocultar o botão "Voltar ao topo" ao rolar a página
+        window.onscroll = function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.style.display = "block"; // Exibe o botão
+            } else {
+                backToTopButton.style.display = "none"; // Esconde o botão
+            }
+        };
+
+        // Função para rolar de volta ao topo
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
+</body>
+</html>
